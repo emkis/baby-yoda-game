@@ -1,0 +1,208 @@
+.btn {
+  background-image: url(bg/BUTTONS/NotSelected.png);
+  background-position: 0px;
+  width: 62px;
+  height: 65px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.btn.middle-btn {
+  background-position: -84px 0px;
+}
+
+.btn.right-btn {
+  background-position: -167px 0px;
+}
+
+.btn:hover,
+.btn:focus {
+  background-image: url(bg/BUTTONS/Hover.png);
+}
+
+.btn:active {
+  background-image: url(bg/BUTTONS/Selected.png);
+}
+
+.icon {
+  background-image: url(bg/ICONS/NotSelected.png);
+  background-position: 0px;
+  width: 56px;
+  height: 56px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  border-color: transparent;
+}
+
+.icon.poop-icon {
+  background-position: -162px 0px;
+}
+
+.icon.defend-icon {
+  background-position: -323px 0px;
+}
+
+.icon.highlighted {
+  background-image: url(bg/ICONS/Hover.png);
+}
+
+.icon.active {
+  background-image: url(bg/ICONS/Selected.png);
+}
+
+.fox-idling {
+  background-image: url(./pet/Idle.png);
+  background-repeat: no-repeat;
+  width: 154px;
+  height: 165px;
+  transform: translateY(8px);
+  animation: idle 1.3s steps(6) infinite;
+}
+
+@keyframes idle {
+  to {
+    background-position: -924px;
+  }
+}
+
+.fox.fox-pooping {
+  background-image: url(./pet/Poop.png);
+  background-position: -2296px;
+  background-repeat: no-repeat;
+  width: 287px;
+  height: 197px;
+  animation: pooping 3s steps(9);
+}
+
+@keyframes pooping {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -2583px;
+  }
+}
+
+.fox-celebrate.fox {
+  background-image: url(./pet/Happy.png);
+  background-repeat: no-repeat;
+  width: 188px;
+  height: 221px;
+  animation: celebrate 1.3s steps(4) infinite;
+}
+
+@keyframes celebrate {
+  to {
+    background-position: -750px;
+  }
+}
+
+.fox-hungry.fox {
+  background-image: url(./pet/Hungry.png);
+  background-repeat: no-repeat;
+  width: 188px;
+  height: 206px;
+  top: 300px;
+  animation: hungry 1s steps(2) infinite;
+}
+
+@keyframes hungry {
+  to {
+    background-position: -376px;
+  }
+}
+
+.fox-eating.fox {
+  background-image: url(./pet/Eating.png);
+  background-repeat: no-repeat;
+  background-position: -1848px;
+  width: 264px;
+  height: 151px;
+  top: 355px;
+  left: 58px;
+  animation: eating 3s steps(8);
+}
+
+@keyframes eating {
+  from {
+    background-position: 0;
+  }
+  to {
+    background-position: -2112px;
+  }
+}
+
+.fox-egg.fox {
+  background-image: url(./pet/Birth.png);
+  background-repeat: no-repeat;
+  background-position: -888px;
+  width: 220px;
+  height: 200px;
+  animation: hatching 4s steps(5);
+  transform: scale(0.9);
+}
+
+@keyframes hatching {
+  from {
+    background-position: 0px;
+  }
+  to {
+    background-position: -1110px;
+  }
+}
+
+.fox-dead.fox {
+  background-image: url(./pet/RIP.png);
+  background-repeat: no-repeat;
+  width: 118px;
+  height: 119px;
+  animation: being-dead 1s steps(3) infinite;
+}
+
+@keyframes being-dead {
+  to {
+    background-position: -354px;
+  }
+}
+
+.poop-bag {
+  background-image: url(./pet/PoopBag.png);
+  animation: swing-poop-bag 1s steps(3) infinite alternate;
+  width: 99px;
+  height: 104px;
+  overflow: hidden;
+}
+
+@keyframes swing-poop-bag {
+  to {
+    background-position: -297px;
+  }
+}
+
+.frame {
+  background-image: url(./bg/FRAME.png);
+}
+
+.game {
+  background-image: url(./bg/DAY.png);
+}
+
+.game.night {
+  background-image: url(./bg/NIGHT.png);
+}
+
+.game.dead {
+  background-image: url(./bg/DEAD.png);
+}
+
+.game.rain {
+  background-image: url(./bg/RAINY.png);
+}
+
+body {
+  background-image: url(./bg/Canvas.png);
+}
