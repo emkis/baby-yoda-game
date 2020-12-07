@@ -4,8 +4,17 @@ import {
   getNextHungerTime,
   getNextDieTime,
   getNextPoopTime,
+  getNextMonsterTime,
 } from "./constants";
-import { modFox, modScene, togglePoopBag, writeModal } from "./ui";
+import { 
+  modFox, 
+  modScene, 
+  toggleMonsters, 
+  togglePoopBag, 
+  writeModal, 
+  toggleAttention,
+  hideAttackStuff,
+} from "./ui";
 
 const gameState = {
   current: "INIT",
@@ -16,6 +25,7 @@ const gameState = {
   poopTime: -1,
   timeToStartCelebrating: -1,
   timeToEndCelebrating: -1,
+  timeToShowMonsters: -1,
   scene: 0,
   tick() {
     console.log(this);
@@ -23,6 +33,8 @@ const gameState = {
     this.clock++;
     if (this.clock === this.wakeTime) {
       this.wake();
+    } else if (this.clock === this.timeToShowMonsters) {
+      this.showMonsters()
     } else if (this.clock === this.hungryTime) {
       this.getHungry();
     } else if (this.clock === this.timeToStartCelebrating) {
@@ -43,6 +55,7 @@ const gameState = {
     modFox("egg");
     modScene("day");
     writeModal();
+    hideAttackStuff()
   },
   wake() {
     this.current = "IDLING";
@@ -73,16 +86,32 @@ const gameState = {
         break;
     }
   },
+  showMonsters() {
+    this.current = 'ATTACKED'
+    this.dieTime = getNextDieTime(this.clock)
+    modFox("scared")
+    modScene('night')
+    toggleMonsters()
+    toggleAttention()
+  },
   handleDefend() {
-    console.log('deve defender');
-    this.determineFoxState();
+    if (this.current === 'ATTACKED') {
+      toggleMonsters()
+      toggleAttention()
+      modScene('day')
+      this.dieTime = -1
+      this.timeToShowMonsters = -1
+      this.startCelebrating()
+      this.hungryTime = getNextHungerTime(this.clock)
+    }
   },
   cleanUpPoop() {
     if (this.current === "POOPING") {
       this.dieTime = -1;
       togglePoopBag(true);
       this.startCelebrating();
-      this.hungryTime = getNextHungerTime(this.clock);
+      this.hungryTime = getNextHungerTime(this.clock + 3);
+      this.timeToShowMonsters = getNextMonsterTime(this.clock + 2)
     }
   },
   poop() {
@@ -124,12 +153,15 @@ const gameState = {
     this.poopTime = -1;
     this.timeToStartCelebrating = -1;
     this.timeToEndCelebrating = -1;
+    this.timeToShowMonsters = -1
   },
   getHungry() {
-    this.current = "HUNGRY";
-    this.dieTime = getNextDieTime(this.clock);
-    this.hungryTime = -1;
-    modFox("hungry");
+    if (this.current === 'IDLING') {
+      this.current = "HUNGRY";
+      this.dieTime = getNextDieTime(this.clock);
+      this.hungryTime = -1;
+      modFox("hungry");
+    }
   },
   die() {
     this.current = "DEAD";

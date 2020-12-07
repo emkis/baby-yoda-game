@@ -12,3 +12,15 @@ export const writeModal = function writeModal(text = "") {
     ".modal"
   ).innerHTML = `<div class="modal-inner">${text}</div>`;
 };
+export const toggleMonsters = () => {
+  document.querySelectorAll(".monster").forEach(item => item.classList.toggle("hidden"))
+};
+export const toggleAttention = () => {
+  document.querySelector(".attention").classList.toggle("hidden")
+};
+
+export const hideAttackStuff = () => {
+  document.querySelectorAll(".monster").forEach(item => item.classList.add("hidden"))
+  document.querySelector(".attention").classList.add("hidden")
+
+}

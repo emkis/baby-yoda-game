@@ -144,12 +144,40 @@ body {
   left: 248px;
 }
 
-.fox-sleep {
-  top: 351px;
-  left: 445px;
-}
-
 .fox-dead {
   top: 380px;
   left: 243px;
+}
+
+.fox-scared {
+  top: 355px;
+  left: 270px;
+}
+
+.attention {
+  position: absolute;
+  top: 200px;
+  left: 313px;
+}
+
+.fox-dead ~ .attention {
+  display: none;
+}
+
+.monster {
+  position: absolute;
+  top: 463px;
+}
+
+.fox-dead ~ .monster {
+  filter: grayscale(100%);
+}
+
+.monster-left {
+  left: 29px;
+}
+
+.monster-right {
+  left: 510px;
+  transform: scaleX(-1);
 }

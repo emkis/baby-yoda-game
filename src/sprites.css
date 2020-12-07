@@ -183,6 +183,58 @@
   }
 }
 
+.fox-scared {
+  background-image: url("./pet/Scared.png");
+  background-repeat: no-repeat;
+  width: 187px;
+  height: 163px;
+  transition: transform 200ms;
+  animation: afraid 1.3s steps(3) infinite;
+}
+
+@keyframes afraid {
+  to {
+    background-position: -561px;
+  }
+}
+
+.attention-attack {
+  background-image: url("./pet/Warning.png");
+  background-repeat: no-repeat;
+  width: 104px;
+  height: 91px;
+  transition: transform 200ms;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+		transform: scale(1);
+	}
+
+	60% {
+		transform: scale(1.2);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+.monster-attack {
+  background-image: url(./pet/Monster.png);
+  background-repeat: no-repeat;
+  width: 210px;
+  height: 125px;
+  animation: attacking 1s steps(2) infinite;
+}
+
+@keyframes attacking {
+  to {
+    background-position: -420px;
+  }
+}
+
 .frame {
   background-image: url(./bg/FRAME.png);
 }
